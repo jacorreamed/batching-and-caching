@@ -1,15 +1,11 @@
-const sqlite3 = require('sqlite3');
-const {open} = require('sqlite');
+const dbConnection = require('../database/dbConnection');
 
 const PRODUCTS = ['book', 'laptop', 'desk', 'folder'];
 
 const getRandomAmount = () => Math.floor(Math.random() * 491) + 10; // entre 10 y 500
 
 const seed = async () => {
-  const db = await open({
-    filename: './sales.db',
-    driver: sqlite3.Database
-  });
+  const db = await dbConnection;
 
   // Crear tabla si no existe
   await db.exec(`

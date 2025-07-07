@@ -1,4 +1,4 @@
-const dbPromise = require('./dbConnection');
+const dbPromise = require('../database/dbConnection');
 
 module.exports = async function getTotalSales(product) {
   const db = await dbPromise;
